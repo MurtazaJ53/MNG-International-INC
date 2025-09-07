@@ -22,6 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -46,6 +47,11 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        spice: {
+          cumin: "hsl(var(--cumin))",
+          cinnamon: "hsl(var(--cinnamon))",
+          cardamom: "hsl(var(--cardamom))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
