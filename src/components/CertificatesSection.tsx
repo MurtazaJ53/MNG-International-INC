@@ -1,33 +1,100 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Award, Leaf, Globe } from "lucide-react";
+import { Button } from "@/components/ui/enhanced-button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Shield, Award, Leaf, Globe, Download, ExternalLink } from "lucide-react";
 
 const certificates = [
   {
     icon: Shield,
     title: "Food Safety Certified",
     description: "HACCP and ISO 22000 certified facilities ensuring the highest food safety standards",
-    badge: "ISO 22000"
+    badge: "ISO 22000",
+    pdfUrl: "/certificates/iso-22000-certificate.pdf",
+    pdfTitle: "ISO 22000 Food Safety Management Certificate"
   },
   {
     icon: Award,
     title: "Quality Assurance",
     description: "Rigorous quality control processes with third-party testing and verification",
-    badge: "Lab Tested"
+    badge: "Lab Tested",
+    pdfUrl: "/certificates/quality-assurance-report.pdf",
+    pdfTitle: "Quality Assurance Test Reports"
   },
   {
     icon: Leaf,
     title: "Organic Certification",
     description: "Many of our products are certified organic, free from pesticides and chemicals",
-    badge: "Organic"
+    badge: "Organic",
+    pdfUrl: "/certificates/organic-certification.pdf",
+    pdfTitle: "Organic Products Certification"
   },
   {
     icon: Globe,
     title: "Export Licensed",
     description: "Fully licensed for international export with proper documentation and traceability",
-    badge: "Export Ready"
+    badge: "Export Ready",
+    pdfUrl: "/certificates/export-license.pdf",
+    pdfTitle: "International Export License"
   }
 ];
+
+const CertificateViewer = ({ certificate }: { certificate: typeof certificates[0] }) => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline" size="sm" className="gap-2 mt-3">
+          <ExternalLink className="w-4 h-4" />
+          View Certificate
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[900px] max-h-[90vh]">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2">
+            <certificate.icon className="w-5 h-5 text-primary" />
+            {certificate.pdfTitle}
+          </DialogTitle>
+          <DialogDescription>
+            Official certification document - {certificate.badge}
+          </DialogDescription>
+        </DialogHeader>
+        
+        <div className="space-y-4">
+          {/* PDF Embed */}
+          <div className="border rounded-lg overflow-hidden" style={{ height: '500px' }}>
+            <iframe
+              src={certificate.pdfUrl}
+              width="100%"
+              height="100%"
+              title={certificate.pdfTitle}
+              className="border-0"
+            />
+          </div>
+          
+          {/* Download Option */}
+          <div className="flex items-center justify-between p-4 bg-secondary/20 rounded-lg">
+            <div>
+              <p className="font-medium text-sm">Download Certificate</p>
+              <p className="text-xs text-muted-foreground">
+                Save this certificate for your records
+              </p>
+            </div>
+            <Button asChild>
+              <a
+                href={certificate.pdfUrl}
+                download
+                className="gap-2"
+              >
+                <Download className="w-4 h-4" />
+                Download PDF
+              </a>
+            </Button>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 export const CertificatesSection = () => {
   return (
@@ -58,9 +125,12 @@ export const CertificatesSection = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-center text-sm leading-relaxed">
+                <CardDescription className="text-center text-sm leading-relaxed mb-3">
                   {cert.description}
                 </CardDescription>
+                <div className="flex justify-center">
+                  <CertificateViewer certificate={cert} />
+                </div>
               </CardContent>
             </Card>
           ))}

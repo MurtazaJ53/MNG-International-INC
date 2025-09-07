@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { SearchBar } from "@/components/SearchBar";
 import { ProductCard, Product } from "@/components/ProductCard";
 import { ProductModal } from "@/components/ProductModal";
 import { CertificatesSection } from "@/components/CertificatesSection";
+import { Footer } from "@/components/Footer";
 import { products } from "@/data/products";
 
 const Index = () => {
@@ -28,6 +30,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Header */}
+      <Header />
+      
       {/* Hero Section */}
       <HeroSection />
 
@@ -81,6 +86,9 @@ const Index = () => {
 
       {/* Certificates Section */}
       <CertificatesSection />
+
+      {/* Footer */}
+      <Footer />
 
       {/* Product Modal */}
       <ProductModal
