@@ -42,6 +42,7 @@ export const productsConfig: Product[] = [
     ],
     origin: "Kerala, India"
   },
+  
   {
     id: "2",
     name: "Authentic Garam Masala",

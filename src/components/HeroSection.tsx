@@ -23,7 +23,7 @@ export const HeroSection = () => {
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
           Premium
           <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Indian Spices
+            Spices
           </span>
         </h1>
         

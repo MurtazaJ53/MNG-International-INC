@@ -37,8 +37,8 @@ export const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <h1 className="text-2xl font-bold">
-              <span className="text-primary">Premium</span>
-              <span className={isScrolled ? "text-foreground" : "text-white"}>Spices</span>
+              <span className="text-primary">MNG International Inc</span>
+              {/* <span className={isScrolled ? "text-foreground" : "text-white"}>International Inc</span> */}
             </h1>
           </div>
 
